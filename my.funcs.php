@@ -1,4 +1,5 @@
 <?php
+//qweqwe
 /*
 connect($link,$cookie,$opt_header,$opt_follow)
 postconnect($link,$cookie,$postdata,$opt_header,$opt_follow)
@@ -13,7 +14,7 @@ function postconnect($link,$cookie,$postdata,$opt_header,$opt_follow){
   curl_setopt($сonnection, CURLOPT_HEADER,$opt_header);
   curl_setopt($сonnection, CURLOPT_RETURNTRANSFER,1);
   curl_setopt($сonnection, CURLOPT_POST,1);
-  curl_setopt($сonnection, CURLOPT_FOLLOWLOCATION,$opt_follow);  
+  curl_setopt($сonnection, CURLOPT_FOLLOWLOCATION,$opt_follow);
   curl_setopt($сonnection, CURLOPT_POSTFIELDS, $postdata);
   curl_setopt($сonnection, CURLOPT_сonnectTIMEOUT,30);
   $all = curl_exec($сonnection);
@@ -47,7 +48,7 @@ return FALSE;
 
 
 function makeTextBlock($text, $fontfile, $fontsize, $width)
-{   
+{
     $words = explode(' ', $text);
     $lines = array($words[0]);
     $currentLine = 0;
@@ -64,9 +65,9 @@ function makeTextBlock($text, $fontfile, $fontsize, $width)
             $lines[$currentLine] = $words[$i];
         }
     }
-   
+
     return implode("\n", $lines);
-} 
+}
 
 function create_layer( $size, $angle, $font, $char,$fontcolor,$mergex,$mergey )
 {
@@ -100,12 +101,12 @@ function create_layer( $size, $angle, $font, $char,$fontcolor,$mergex,$mergey )
     $image = imagecreatetruecolor( $imw+10, $imh+10 );
     imagefill( $image, 0, 0, imagecolorallocate( $image, 255, 255, 255 ) );
     imagettftext( $image, $size, $angle, $bx+5, $by+5, $fontcolor, $font, $char );
-    
+
     imageline  ($image  , 0, 0, 0, $imh+9, imagecolorallocate( $image, 0, 0, 0));
     imageline  ($image  , 0, 0, $imw+9, 0, imagecolorallocate( $image, 0, 0, 0));
     imageline  ($image  , 0, $imh+9, $imw+9, $imh+9, imagecolorallocate( $image, 0, 0, 0));
     imageline  ($image  , $imw+9, 0, $imw+9, $imh+9, imagecolorallocate( $image, 0, 0, 0));
-    
+
     imagecopymerge ($im,$image, $mergex, $mergey, 0, 0, $imw+10, $imh+10, 55);
     imagedestroy( $image );
 }
