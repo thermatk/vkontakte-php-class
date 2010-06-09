@@ -29,6 +29,9 @@ __construct(мейл, пароль) - подключение
 cookie_construct() - сборка куки
 check_sid($string) - проверка на наличие новой sid и сборка куки с ней + проверка на капчу
 
+Стена:
+wall_graffiti_uploadfile(id адресата,файл) - отправить граффити на стенку профиля
+
 Друзья:
 friend_request_apply(id просящего, папка друзей в их формате) - принимать заявку в друзья с распределением по группам
 friend_request_idarray() - получить массив с id подавших заявку на дружбу
@@ -61,7 +64,34 @@ get_birthday_today() - получить двумерный массив с пр�
 
 Настройки:
 banlist_add(id профиля) - добавить id в "чёрный список"
+
 */
+
+
+
+
+///////////////////////////////
+///////////////////////////////
+////////Дешифровка хэшей///////
+///////////////////////////////
+///////////////////////////////
+function vk012010decode($hash)  {
+      $l=strlen($hash);
+      $str=substr($hash,$l-5).substr($hash,4,$l-12);
+      $res=vk012010hashes($str);
+      return $res;
+}
+function vk012010hashes($str)  {
+      $length=strlen($str);
+      $tmp="";
+      for($i=0;$i<$length;$i++)
+      $tmp.=$str[$length-$i-1];
+      
+      return $tmp;
+}
+///////////////////////////////
+///////////////////////////////
+
 
 class VkAcc {
 
@@ -81,8 +111,8 @@ class VkAcc {
 		
 					
 		
-		
-		$this->vk_sid=grab($getdata,"id='s' value='","'");
+				 
+		$this->vk_sid=grab($getdata,"name='s' value='","'");
 		
 		
 		if($this->vk_sid){
@@ -362,6 +392,29 @@ class VkAcc {
 		$total=postconnect("http://vkontakte.ru/notes.php",$this->vk_cookie,"act=a_spam_comment&oid=$noteuserid&cid=$commentid",1,1);
 		$this->check_sid($total);	
 	}
+	
+	function wall_graffiti_uploadfile($toid,$file){
+		$grafdata= array('Signature' => md5(substr(base64_encode(file_get_contents($file)), 0, 1024)), 'Filedata' => "@".$file);
+		
+		$grafload=postconnect("http://vkontakte.ru/graffiti.php?to_id=$toid&group_id=0",$this->vk_cookie,$grafdata,1,1);
+		$this->check_sid($grafload);
+				
+		$grid=grab($grafload,'name="grid" value="','"');
+		
+		$wall_hash=grab($grafload,'name="wall_hash" value="','"');
+				
+		$wall_hash=vk012010decode($wall_hash);
+		
+		$to_id=grab($grafload,'name="to_id" value="','"');
+		
+		$grafin=postconnect("http://vkontakte.ru/wall.php",$this->vk_cookie,"act=sent&grid=".$grid."&to_id=".$to_id."&wall_hash=".$wall_hash."&message=".$grid,1,0);
+		$this->check_sid($grafin);
+			
+		$grafrwall=getconnect("http://vkontakte.ru/wall.php?act=write&id=".$to_id."&check=1",$this->vk_cookie,1,0);
+		$this->check_sid($grafwall);
+		
+	}
  
 }
+
 ?>
