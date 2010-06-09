@@ -74,7 +74,6 @@ return FALSE;
 }
 
 
-
 function makeTextBlock($text, $fontfile, $fontsize, $width)
 {   
     $words = explode(' ', $text);
@@ -127,7 +126,7 @@ function create_layer( $size, $angle, $font, $char,$fontcolor,$mergex,$mergey )
         }
     }
     $image = imagecreatetruecolor( $imw+10, $imh+10 );
-    //imagefill( $image, 0, 0, imagecolorallocate( $image, 255, 255, 255 ) );
+    imagefill( $image, 0, 0, imagecolorallocate( $image, 255, 255, 255 ) );
     imagettftext( $image, $size, $angle, $bx+5, $by+5, $fontcolor, $font, $char );
     
     imageline  ($image  , 0, 0, 0, $imh+9, imagecolorallocate( $image, 0, 0, 0));
