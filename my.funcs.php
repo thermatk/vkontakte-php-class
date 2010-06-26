@@ -18,35 +18,35 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 /*
-Тут разные полезные функции созданные в разное время, но часто мной используемые в моих программах и скриптах.
+РўСѓС‚ СЂР°Р·РЅС‹Рµ РїРѕР»РµР·РЅС‹Рµ С„СѓРЅРєС†РёРё СЃРѕР·РґР°РЅРЅС‹Рµ РІ СЂР°Р·РЅРѕРµ РІСЂРµРјСЏ, РЅРѕ С‡Р°СЃС‚Рѕ РјРЅРѕР№ РёСЃРїРѕР»СЊР·СѓРµРјС‹Рµ РІ РјРѕРёС… РїСЂРѕРіСЂР°РјРјР°С… Рё СЃРєСЂРёРїС‚Р°С….
 
-Список:
+РЎРїРёСЃРѕРє:
 
-getconnect($link,$cookie,$opt_header,$opt_follow) - подключение типа GET
-postconnect($link,$cookie,$postdata,$opt_header,$opt_follow) - подключение типа POST
-grab($inf,$begin,$end) - вырезать часть текста в определённых границах
-makeTextBlock($text,$fontfile,$fontsize,$width) - делает правильный текстовый блок по заданным параметрам(расставляет знаки новых строк)
-create_layer($size,$angle,$font,$char,$fontcolor,$mergex,$mergey) - создание слоя наложения
-GetICQ(UIN) - получение статуса ICQ
-GetSkype(skype-имя) - получение статуса Skype
-todate(дата, название, альтернативное название) - функция обратного отсчёта
-parsepogod(номер города Gismeteo) - парсинг погоды
-news() - парсинг новостей
-get_uptime($starttime)  - аптайм
+getconnect($link,$cookie,$opt_header,$opt_follow) - РїРѕРґРєР»СЋС‡РµРЅРёРµ С‚РёРїР° GET
+postconnect($link,$cookie,$postdata,$opt_header,$opt_follow) - РїРѕРґРєР»СЋС‡РµРЅРёРµ С‚РёРїР° POST
+grab($inf,$begin,$end) - РІС‹СЂРµР·Р°С‚СЊ С‡Р°СЃС‚СЊ С‚РµРєСЃС‚Р° РІ РѕРїСЂРµРґРµР»С‘РЅРЅС‹С… РіСЂР°РЅРёС†Р°С…
+makeTextBlock($text,$fontfile,$fontsize,$width) - РґРµР»Р°РµС‚ РїСЂР°РІРёР»СЊРЅС‹Р№ С‚РµРєСЃС‚РѕРІС‹Р№ Р±Р»РѕРє РїРѕ Р·Р°РґР°РЅРЅС‹Рј РїР°СЂР°РјРµС‚СЂР°Рј(СЂР°СЃСЃС‚Р°РІР»СЏРµС‚ Р·РЅР°РєРё РЅРѕРІС‹С… СЃС‚СЂРѕРє)
+create_layer($size,$angle,$font,$char,$fontcolor,$mergex,$mergey,$im) - СЃРѕР·РґР°РЅРёРµ СЃР»РѕСЏ РЅР°Р»РѕР¶РµРЅРёСЏ
+GetICQ(UIN) - РїРѕР»СѓС‡РµРЅРёРµ СЃС‚Р°С‚СѓСЃР° ICQ
+GetSkype(skype-РёРјСЏ) - РїРѕР»СѓС‡РµРЅРёРµ СЃС‚Р°С‚СѓСЃР° Skype
+todate(РґР°С‚Р°, РЅР°Р·РІР°РЅРёРµ, Р°Р»СЊС‚РµСЂРЅР°С‚РёРІРЅРѕРµ РЅР°Р·РІР°РЅРёРµ) - С„СѓРЅРєС†РёСЏ РѕР±СЂР°С‚РЅРѕРіРѕ РѕС‚СЃС‡С‘С‚Р°
+parsepogod(РЅРѕРјРµСЂ РіРѕСЂРѕРґР° Gismeteo) - РїР°СЂСЃРёРЅРі РїРѕРіРѕРґС‹
+news() - РїР°СЂСЃРёРЅРі РЅРѕРІРѕСЃС‚РµР№
+get_uptime($starttime)  - Р°РїС‚Р°Р№Рј
 
 */
 function postconnect($link,$cookie,$postdata,$opt_header,$opt_follow){
-  $сonnection = curl_init();
-  curl_setopt($сonnection, CURLOPT_URL,$link);
-  curl_setopt($сonnection, CURLOPT_COOKIE,$cookie);
-  curl_setopt($сonnection, CURLOPT_HEADER,$opt_header);
-  curl_setopt($сonnection, CURLOPT_RETURNTRANSFER,1);
-  curl_setopt($сonnection, CURLOPT_POST,1);
-  curl_setopt($сonnection, CURLOPT_FOLLOWLOCATION,$opt_follow);  
-  curl_setopt($сonnection, CURLOPT_POSTFIELDS, $postdata);
-  curl_setopt($сonnection, CURLOPT_сonnectTIMEOUT,30);
-  $all = curl_exec($сonnection);
-  curl_close($сonnection);
+  $СЃonnection = curl_init();
+  curl_setopt($СЃonnection, CURLOPT_URL,$link);
+  curl_setopt($СЃonnection, CURLOPT_COOKIE,$cookie);
+  curl_setopt($СЃonnection, CURLOPT_HEADER,$opt_header);
+  curl_setopt($СЃonnection, CURLOPT_RETURNTRANSFER,1);
+  curl_setopt($СЃonnection, CURLOPT_POST,1);
+  curl_setopt($СЃonnection, CURLOPT_FOLLOWLOCATION,$opt_follow);  
+  curl_setopt($СЃonnection, CURLOPT_POSTFIELDS, $postdata);
+  curl_setopt($СЃonnection, CURLOPT_СЃonnectTIMEOUT,30);
+  $all = curl_exec($СЃonnection);
+  curl_close($СЃonnection);
 return $all;
 }
 function getconnect($link,$cookie,$opt_header,$opt_follow){
@@ -73,7 +73,6 @@ return FALSE;
 	}
 }
 
-
 function makeTextBlock($text, $fontfile, $fontsize, $width)
 {   
     $words = explode(' ', $text);
@@ -96,9 +95,9 @@ function makeTextBlock($text, $fontfile, $fontsize, $width)
     return implode("\n", $lines);
 } 
 
-function create_layer( $size, $angle, $font, $char,$fontcolor,$mergex,$mergey )
+function create_layer( $size, $angle, $font, $char,$fontcolor,$mergex,$mergey,$im)
 {
-    global $im;
+    
     $rect = imagettfbbox( $size, 0, $font, $char );
     if( 0 == $angle ) {
         $imh = $rect[1] - $rect[7];
@@ -136,16 +135,16 @@ function create_layer( $size, $angle, $font, $char,$fontcolor,$mergex,$mergey )
     
     imagecopymerge ($im,$image, $mergex, $mergey, 0, 0, $imw+10, $imh+10, 55);
     imagedestroy( $image );
+    return $im;
 }
-
 function GetICQ($uin) {
 	if (!is_numeric($uin)) return FALSE;
 
 	$response=getconnect("http://status.icq.com/online.gif?icq=$uin&img=5", NULL,0,0);
 
-	if (strstr($response, 'online1')) return 'Онлайн';
-	if (strstr($response, 'online0')) return 'Оффлайн';
-	if (strstr($response, 'online2')) return 'Информация недоступна';
+	if (strstr($response, 'online1')) return 'РћРЅР»Р°Р№РЅ';
+	if (strstr($response, 'online0')) return 'РћС„С„Р»Р°Р№РЅ';
+	if (strstr($response, 'online2')) return 'РРЅС„РѕСЂРјР°С†РёСЏ РЅРµРґРѕСЃС‚СѓРїРЅР°';
 }
 
 function GetSkype($skype) {
@@ -153,9 +152,9 @@ function GetSkype($skype) {
 	$response = getconnect("http://mystatus.skype.com/$skype.num",NULL,0,0);
 	
 	
-	if (strstr($response, '1')) return 'Оффлайн';
-	if (strstr($response, '0')) return 'Информация недоступна';
-	if (strstr($response, '2')) return 'Онлайн';
+	if (strstr($response, '1')) return 'РћС„С„Р»Р°Р№РЅ';
+	if (strstr($response, '0')) return 'РРЅС„РѕСЂРјР°С†РёСЏ РЅРµРґРѕСЃС‚СѓРїРЅР°';
+	if (strstr($response, '2')) return 'РћРЅР»Р°Р№РЅ';
 }
 
 
@@ -169,33 +168,33 @@ function todate($date,$fname,$elsename) {
 	$hours=floor($sec/60/60);
 	$min=floor($sec/60 - $hours*60);
 	switch(substr($days, -1, 1)){
-		case 1: $o='остался ';
+		case 1: $o='РѕСЃС‚Р°Р»СЃСЏ ';
 		break;
-		case 2: case 3: case 4: case 5: case 6: case 7: case 8: case 9: case 0: $o='осталось ';
+		case 2: case 3: case 4: case 5: case 6: case 7: case 8: case 9: case 0: $o='РѕСЃС‚Р°Р»РѕСЃСЊ ';
 		break;
 	}
 	switch(substr($days, -1, 1)){
-		case 1: $d='день, ';
+		case 1: $d='РґРµРЅСЊ, ';
 		break;
-		case 2: case 3: case 4: $d='дня, ';
+		case 2: case 3: case 4: $d='РґРЅСЏ, ';
 		break;
-		case 5: case 6: case 7: case 8: case 9: case 0: $d='дней, ';
+		case 5: case 6: case 7: case 8: case 9: case 0: $d='РґРЅРµР№, ';
 		break;
 	}
 	switch(substr($hour, -1, 1)) {
-		case 1: $h='час';
+		case 1: $h='С‡Р°СЃ';
 		break;
-		case 2: case 3: case 4: $h='часа'; 
+		case 2: case 3: case 4: $h='С‡Р°СЃР°'; 
 		break;
-		case 5: case 6: case 7: case 8: case 9: case 0: $h='часов';
+		case 5: case 6: case 7: case 8: case 9: case 0: $h='С‡Р°СЃРѕРІ';
 		break;
 	}
 	switch(substr($min, -1, 1)) {
-		case 1: $m='минута'; 
+		case 1: $m='РјРёРЅСѓС‚Р°'; 
 		break;
-		case 2: case 3: case 4: $m='минуты'; 
+		case 2: case 3: case 4: $m='РјРёРЅСѓС‚С‹'; 
 		break;
-		case 5: case 6: case 7: case 8: case 9: case 0: $m='минут';
+		case 5: case 6: case 7: case 8: case 9: case 0: $m='РјРёРЅСѓС‚';
 		break;
 	}
 	if ($sec>0) {
@@ -206,7 +205,7 @@ function todate($date,$fname,$elsename) {
 	}
 	if ($days>0) $name2=$days.' '.$d;
 	if ($h1>0) $name3=$hour.' '.$h;
-	if ($m1>0) $name4=' и '.$min.' '.$m;
+	if ($m1>0) $name4=' Рё '.$min.' '.$m;
 	$final=$fname.$name2.$name3.$name4;
 	return $final;
 }
@@ -214,78 +213,78 @@ function todate($date,$fname,$elsename) {
 function parsepogod($citynum){
 	$xmlq = file_get_contents('http://informer.gismeteo.ru/xml/'.$citynum.'_1.xml');
 
-	//передаём содержимое xml файла расширению SimpleXML
+	//РїРµСЂРµРґР°С‘Рј СЃРѕРґРµСЂР¶РёРјРѕРµ xml С„Р°Р№Р»Р° СЂР°СЃС€РёСЂРµРЅРёСЋ SimpleXML
 	$res1 = simplexml_load_string($xmlq);
-	//Запускаем цикл для отображения погоды
+	//Р—Р°РїСѓСЃРєР°РµРј С†РёРєР» РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ РїРѕРіРѕРґС‹
 	for ($i = 0; $i < count ($res1->REPORT->TOWN->FORECAST); $i++) {
-		//время суток прогноза погоды
+		//РІСЂРµРјСЏ СЃСѓС‚РѕРє РїСЂРѕРіРЅРѕР·Р° РїРѕРіРѕРґС‹
 		switch ((int)$res1->REPORT->TOWN->FORECAST[$i]->attributes()->tod):
-			case  0:$time = 'ночь';break;
-			case  1:$time = 'утро';break;
-			case  2:$time = 'день';break;
-			case  3:$time = 'вечер';break;
+			case  0:$time = 'РЅРѕС‡СЊ';break;
+			case  1:$time = 'СѓС‚СЂРѕ';break;
+			case  2:$time = 'РґРµРЅСЊ';break;
+			case  3:$time = 'РІРµС‡РµСЂ';break;
 			default:$time = '';break;
 		endswitch;
-		//день недели на который осуществляется прогноз
+		//РґРµРЅСЊ РЅРµРґРµР»Рё РЅР° РєРѕС‚РѕСЂС‹Р№ РѕСЃСѓС‰РµСЃС‚РІР»СЏРµС‚СЃСЏ РїСЂРѕРіРЅРѕР·
 		switch ((int)$res1->REPORT->TOWN->FORECAST[$i]->attributes()->weekday):
-			case  1:$weekday = 'воскресенье';break;
-			case  2:$weekday = 'понедельник';break;
-			case  3:$weekday = 'вторник';break;
-			case  4:$weekday = 'среда';break;
-			case  5:$weekday = 'четверг';break;
-			case  6:$weekday = 'пятница';break;
-			case  7:$weekday = 'суббота';break;
+			case  1:$weekday = 'РІРѕСЃРєСЂРµСЃРµРЅСЊРµ';break;
+			case  2:$weekday = 'РїРѕРЅРµРґРµР»СЊРЅРёРє';break;
+			case  3:$weekday = 'РІС‚РѕСЂРЅРёРє';break;
+			case  4:$weekday = 'СЃСЂРµРґР°';break;
+			case  5:$weekday = 'С‡РµС‚РІРµСЂРі';break;
+			case  6:$weekday = 'РїСЏС‚РЅРёС†Р°';break;
+			case  7:$weekday = 'СЃСѓР±Р±РѕС‚Р°';break;
 			default:$weekday = '';break;
 		endswitch;
-		//выбор облачности
+		//РІС‹Р±РѕСЂ РѕР±Р»Р°С‡РЅРѕСЃС‚Рё
 		switch ((int) $res1->REPORT->TOWN->FORECAST[$i]->PHENOMENA->attributes()->cloudiness):
-			case  0:$cloudiness = 'ясно';break;
-			case  1:$cloudiness = 'малооблачно';break;
-			case  2:$cloudiness = 'облачно';break;
-			case  3:$cloudiness = 'пасмурно';break;
+			case  0:$cloudiness = 'СЏСЃРЅРѕ';break;
+			case  1:$cloudiness = 'РјР°Р»РѕРѕР±Р»Р°С‡РЅРѕ';break;
+			case  2:$cloudiness = 'РѕР±Р»Р°С‡РЅРѕ';break;
+			case  3:$cloudiness = 'РїР°СЃРјСѓСЂРЅРѕ';break;
 			default:$cloudiness = '';break;
 		endswitch;
-		//определение типа осадков
+		//РѕРїСЂРµРґРµР»РµРЅРёРµ С‚РёРїР° РѕСЃР°РґРєРѕРІ
 		switch ((int) $res1->REPORT->TOWN->FORECAST[$i]->PHENOMENA->attributes()->precipitation):
-			case  4:$precipitation = 'дождь';break;
-			case  5:$precipitation = 'ливень';break;
-			case  6:$precipitation = 'снег';break;
-			case  7:$precipitation = 'снег';break;
-			case  8:$precipitation = 'гроза';break;
-			case  9:$precipitation = 'нет данных';break;
-			case 10:$precipitation = 'без осадков';break;
+			case  4:$precipitation = 'РґРѕР¶РґСЊ';break;
+			case  5:$precipitation = 'Р»РёРІРµРЅСЊ';break;
+			case  6:$precipitation = 'СЃРЅРµРі';break;
+			case  7:$precipitation = 'СЃРЅРµРі';break;
+			case  8:$precipitation = 'РіСЂРѕР·Р°';break;
+			case  9:$precipitation = 'РЅРµС‚ РґР°РЅРЅС‹С…';break;
+			case 10:$precipitation = 'Р±РµР· РѕСЃР°РґРєРѕРІ';break;
 			default:$precipitation = '';break;
 		endswitch;
-		//определение направления ветра
+		//РѕРїСЂРµРґРµР»РµРЅРёРµ РЅР°РїСЂР°РІР»РµРЅРёСЏ РІРµС‚СЂР°
 		switch ((int) $res1->REPORT->TOWN->FORECAST[$i]->WIND->attributes()->direction):
-			case  0:$w_direct = 'северный';break;
-			case  1:$w_direct = 'северо-восточный';break;
-			case  2:$w_direct = 'восточный';break;
-			case  3:$w_direct = 'юго-восточный';break;
-			case  4:$w_direct = 'южный';break;
-			case  5:$w_direct = 'юго-западный';break;
-			case  6:$w_direct = 'западный';break;
-			case  7:$w_direct = 'северо-западный';break;
+			case  0:$w_direct = 'СЃРµРІРµСЂРЅС‹Р№';break;
+			case  1:$w_direct = 'СЃРµРІРµСЂРѕ-РІРѕСЃС‚РѕС‡РЅС‹Р№';break;
+			case  2:$w_direct = 'РІРѕСЃС‚РѕС‡РЅС‹Р№';break;
+			case  3:$w_direct = 'СЋРіРѕ-РІРѕСЃС‚РѕС‡РЅС‹Р№';break;
+			case  4:$w_direct = 'СЋР¶РЅС‹Р№';break;
+			case  5:$w_direct = 'СЋРіРѕ-Р·Р°РїР°РґРЅС‹Р№';break;
+			case  6:$w_direct = 'Р·Р°РїР°РґРЅС‹Р№';break;
+			case  7:$w_direct = 'СЃРµРІРµСЂРѕ-Р·Р°РїР°РґРЅС‹Р№';break;
 			default:$w_direct = '';break;
 		endswitch;
-		//день на который осуществляется прогноз
+		//РґРµРЅСЊ РЅР° РєРѕС‚РѕСЂС‹Р№ РѕСЃСѓС‰РµСЃС‚РІР»СЏРµС‚СЃСЏ РїСЂРѕРіРЅРѕР·
 		$daygismeteo = $res1->REPORT->TOWN->FORECAST[$i]->attributes()->day;
-		//месяц на который осуществляется прогноз
+		//РјРµСЃСЏС† РЅР° РєРѕС‚РѕСЂС‹Р№ РѕСЃСѓС‰РµСЃС‚РІР»СЏРµС‚СЃСЏ РїСЂРѕРіРЅРѕР·
 		$monthgismeteo = $res1->REPORT->TOWN->FORECAST[$i]->attributes()->month;
-		//год на который осуществляется прогноз
+		//РіРѕРґ РЅР° РєРѕС‚РѕСЂС‹Р№ РѕСЃСѓС‰РµСЃС‚РІР»СЏРµС‚СЃСЏ РїСЂРѕРіРЅРѕР·
 		$yeargismeteo = $res1->REPORT->TOWN->FORECAST[$i]->attributes()->year;
-		// температура
+		// С‚РµРјРїРµСЂР°С‚СѓСЂР°
 		$t_min = $res1->REPORT->TOWN->FORECAST[$i]->TEMPERATURE->attributes()->min;
 		$t_max = $res1->REPORT->TOWN->FORECAST[$i]->TEMPERATURE->attributes()->max;
 		if ($t_min >0 ) $t_min='+'.$t_min;
 		if ($t_max >0 ) $t_max='+'.$t_max;
-		// давление
+		// РґР°РІР»РµРЅРёРµ
 		$d_min = $res1->REPORT->TOWN->FORECAST[$i]->PRESSURE->attributes()->min;
 		$d_max = $res1->REPORT->TOWN->FORECAST[$i]->PRESSURE->attributes()->max;
-		// скорость ветра
+		// СЃРєРѕСЂРѕСЃС‚СЊ РІРµС‚СЂР°
 		$w_min = $res1->REPORT->TOWN->FORECAST[$i]->WIND->attributes()->min;
 		$w_max = $res1->REPORT->TOWN->FORECAST[$i]->WIND->attributes()->max;
-		// влажность
+		// РІР»Р°Р¶РЅРѕСЃС‚СЊ
 		$r_min = $res1->REPORT->TOWN->FORECAST[$i]->RELWET->attributes()->min;
 		$r_max = $res1->REPORT->TOWN->FORECAST[$i]->RELWET->attributes()->max;
 
@@ -355,8 +354,6 @@ function get_uptime($starttime) {
         $msg = "$hours:$minutes:$seconds";
         return $msg;    
 }
-
-
 
 
 ?>
