@@ -29,6 +29,9 @@ __construct(мейл, пароль) - подключение
 cookie_construct() - сборка куки
 check_sid($string) - проверка на наличие новой sid и сборка куки с ней + проверка на капчу
 
+Профиль:
+profile_avatar_upload(имя файла) - загрузка аватарки
+
 Стена:
 wall_graffiti_uploadfile(id адресата,файл) - отправить граффити на стенку профиля
 
@@ -412,6 +415,22 @@ class VkAcc {
 			
 		$grafrwall=getconnect("http://vkontakte.ru/wall.php?act=write&id=".$to_id."&check=1",$this->vk_cookie,1,0);
 		$this->check_sid($grafwall);
+		
+	}
+	
+	function profile_avatar_upload($file){
+		
+		$page=getconnect("http://vkontakte.ru/profileEdit.php?page=photo",$this->vk_cookie,1,0);
+		$this->check_sid($page);
+		
+				
+		$reg ="#http://cs[0-9]{1,6}\.vkontakte\.ru/upload\.php\?act=profile&mid=[0-9]{1,9}&hash=[0-9a-f]{32}&rhash=[0-9a-f]{32}#";
+    preg_match($reg, $page,$matches);
+    $link = $matches[0];
+		
+		$postdata=array('submit' => ".", 'photo' => "@".$file);
+		$postit=postconnect($link,$this->vk_cookie,$postdata,1,1);	
+		$this->check_sid($postit);				
 		
 	}
  
